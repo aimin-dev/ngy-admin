@@ -5,12 +5,14 @@
       true,
       "attribute",
       "lib",
+      "ngy-admin",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
       "lib",
+      "ngya",
       "kebab-case"
     ]
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ngy-admin',
+  selector: 'ngya-admin',
   template: `
     <p>
       ngy-admin works!

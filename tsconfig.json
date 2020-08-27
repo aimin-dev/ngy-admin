@@ -6,5 +6,12 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/ngy-admin/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngy-admin/tsconfig.spec.json"
+    }
+]
 }

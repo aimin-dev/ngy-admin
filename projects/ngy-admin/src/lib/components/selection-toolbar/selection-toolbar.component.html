@@ -1,0 +1,10 @@
+<mat-toolbar *ngIf="selection?.selected?.length > 0">
+	<div>{{ selection.selected.length }}
+		{{ selection.selected.length > 1 ? 'items' : 'item' }}
+		selected</div>
+	<div class="ml-auto">
+		<button mat-button color="warn" (click)="delete()">
+			<mat-icon class="mr-2">delete</mat-icon>Delete
+        </button>
+	</div>
+</mat-toolbar>

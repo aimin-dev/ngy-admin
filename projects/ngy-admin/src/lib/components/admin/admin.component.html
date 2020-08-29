@@ -1,0 +1,23 @@
+<naa-layout #layout>
+
+	<naa-toolbar>
+		<button mat-icon-button (click)="layout.toggleSidenav()" class="toggle-button">
+			<mat-icon>menu</mat-icon>
+		</button>
+	</naa-toolbar>
+
+	<ng-container class="naa-layout-sidenav">
+		<mat-nav-list class="naa-resources-nav-list">
+			<a mat-list-item *ngFor="let resource of resources" [routerLink]="resource | naaResourceLink" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">
+				{{ resource|naaResourceLabel }}
+			</a>
+		</mat-nav-list>
+	</ng-container>
+
+	<ng-container class="naa-layout-content">
+		<div style="padding: 16px;">
+			<router-outlet></router-outlet>
+		</div>
+	</ng-container>
+
+</naa-layout>

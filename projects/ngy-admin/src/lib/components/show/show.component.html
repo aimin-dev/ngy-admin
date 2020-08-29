@@ -1,0 +1,20 @@
+<div class="text-right">
+	<a mat-button [routerLink]="routeGenerator.generateEditRoute(this.resource, item.id)"><mat-icon class="mr-2">edit</mat-icon>Edit</a>
+</div>
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>{{ (route.data|async).label }}</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-list>
+			<mat-list-item *ngFor="let field of resource.readableFields">
+				<h3 matLine>
+					<span class="mat-caption">{{ field|naaFieldLabel }}</span>
+				</h3>
+				<p matLine>
+					<ngx-api-admin-field-column [resource]="resource" [action]="action" [field]="field" [data]="item"></ngx-api-admin-field-column>
+				</p>
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>

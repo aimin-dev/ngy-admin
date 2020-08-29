@@ -1,0 +1,10 @@
+<ng-container [ngSwitch]="range" *ngIf="value !== null">
+	<ng-container *ngSwitchCase="'http://www.w3.org/2001/XMLSchema#string'">{{ value }}</ng-container>
+	<ng-container *ngSwitchCase="'http://www.w3.org/2001/XMLSchema#boolean'">
+		<mat-icon *ngIf="value === true">check</mat-icon>
+		<mat-icon *ngIf="value !== true">clear</mat-icon>
+	</ng-container>
+	<ng-container *ngSwitchCase="'http://www.w3.org/2001/XMLSchema#dateTime'">{{ value|date }}</ng-container>
+	<!--default case when there are no matches -->
+	<span *ngSwitchDefault>{{ value|json }}</span>
+</ng-container>

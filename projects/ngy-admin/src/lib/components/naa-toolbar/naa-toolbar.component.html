@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" class="example-toolbar" style="position: fixed; top: 0; right: 0; left: 0; z-index: 100">
+	<ng-content select="[mat-icon-button].toggle-button"></ng-content>
+	<h1 class="example-app-name" [style.marginLeft.px]="16">{{ toolbar.getTitle$()|async }}</h1>
+	<span class="ml-auto" style="font-size: 14px">
+		<ngx-api-admin-theme-selector color="accent"></ngx-api-admin-theme-selector>
+	</span>
+</mat-toolbar>
+<mat-progress-bar style="position: fixed; top: 0; left: 0; right: 0; z-index: 10000;" mode="determinate" color="accent" *ngIf="(loader.value$ | async) > 0" [value]=" loader.value$ | async"></mat-progress-bar>

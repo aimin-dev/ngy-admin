@@ -1,0 +1,16 @@
+<ng-container>
+	<button mat-button [matMenuTriggerFor]="columnVisibilityMenu">Columns</button>
+	<mat-menu #columnVisibilityMenu="matMenu">
+		<form [formGroup]="visibilityForm" class="naa-columns-form" (click)="$event.stopPropagation()">
+			<div class="naa-column-list" cdkDropList (cdkDropListDropped)="drop($event)">
+				<div *ngFor="let field of fields" 
+					class="naa-column-item" 
+					[cdkDragDisabled]="!visibilityForm.get(field.name).value"
+					cdkDrag [class.naa-column-disabled]="!visibilityForm.get(field.name).value">
+					<mat-icon class="mr-3" cdkDragHandle>drag_handle</mat-icon>
+					<mat-checkbox [disabled]="isControlDisabled(field)" [formControlName]="field.name">{{ field | naaFieldLabel }}</mat-checkbox>
+				</div>
+			</div>
+		</form>
+	</mat-menu>
+</ng-container>

@@ -1,0 +1,17 @@
+<div class="naa-layout-container" [class.naa-layout-is-mobile]="mobileQuery.matches">
+    
+    <ng-content></ng-content>
+
+	<mat-sidenav-container class="naa-sidenav-container">
+
+		<mat-sidenav opened #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="true" fixedtopgap="56" style="width: 200px;" [style.marginTop.px]="64">
+            <ng-content select=".naa-layout-sidenav, [naa-layout-sidenav]"></ng-content>
+		</mat-sidenav>
+
+		<mat-sidenav-content [style.marginTop.px]="64">
+            <ng-content select=".naa-layout-content, [naa-layout-content]"></ng-content>
+		</mat-sidenav-content>
+
+	</mat-sidenav-container>
+
+</div>

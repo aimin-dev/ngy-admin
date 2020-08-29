@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <p>
       ngy-admin works!
     </p>
+    <button mat-flat-button color="primary">Hello World!</button>
   `,
   styles: [
   ]

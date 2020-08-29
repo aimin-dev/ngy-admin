@@ -6,8 +6,13 @@
     "url": "https://github.com/aimin-dev/ngy-admin"
   },
   "peerDependencies": {
+    "@angular/cdk": "^10.0.0",
     "@angular/common": "^10.0.14",
-    "@angular/core": "^10.0.14"
+    "@angular/core": "^10.0.14",
+    "@angular/material": "^10.0.0",
+    "@ngx-formly/core": "^5.0.0",
+    "@ngx-formly/material": "^5.0.0",
+    "@ngx-formly/schematics": "^5.9.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

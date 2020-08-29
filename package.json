@@ -24,6 +24,9 @@
     "@ngx-formly/core": "^5.9.3",
     "@ngx-formly/material": "^5.9.3",
     "@ngx-formly/schematics": "^5.9.3",
+    "@ngx-loading-bar/core": "^5.1.0",
+    "@ngx-loading-bar/http-client": "^5.1.0",
+    "@ngx-loading-bar/router": "^5.1.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

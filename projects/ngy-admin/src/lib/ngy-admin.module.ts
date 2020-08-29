@@ -1,4 +1,5 @@
 import { NgModule, InjectionToken } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { NgyAdminComponent } from './ngy-admin.component';
 import { MaterialsModule } from './materials.module';
 
@@ -13,6 +14,12 @@ import {
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
+
+// loading bar
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+
 
 // formly config
 const ngyFormlyConfig = {};
@@ -35,6 +42,7 @@ export function defaultFormlyConfig(config: FormlyConfig): ConfigOption {
   declarations: [NgyAdminComponent],
   imports: [
     MaterialsModule,
+    RouterModule,
     // Formly
     // FormlyModule.forRoot(), // with issue
     FormlyModule,
@@ -42,6 +50,9 @@ export function defaultFormlyConfig(config: FormlyConfig): ConfigOption {
     FormlyMatDatepickerModule,
     FormlyMatToggleModule,
     // ./Formly
+    LoadingBarModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
   ],
   providers: [
     { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },

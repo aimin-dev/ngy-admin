@@ -12,7 +12,10 @@
     "@angular/material": "^10.0.0",
     "@ngx-formly/core": "^5.0.0",
     "@ngx-formly/material": "^5.0.0",
-    "@ngx-formly/schematics": "^5.9.0"
+    "@ngx-formly/schematics": "^5.9.0",
+    "@ngx-loading-bar/core": "^5.0.0",
+    "@ngx-loading-bar/http-client": "^5.0.0",
+    "@ngx-loading-bar/router": "^5.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

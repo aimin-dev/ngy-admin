@@ -90,8 +90,12 @@ import {
   FORMLY_CONFIG,
   FormlyConfig,
   FormlyFormBuilder,
-  ConfigOption
+  ConfigOption,
 } from '@ngx-formly/core';
+import {ɵc as FormlyGroup} from '@ngx-formly/core';
+import {ɵa as FORMLY_CONFIG_TOKEN} from '@ngx-formly/core';
+import {ɵb as FormlyFormExpression} from '@ngx-formly/core';
+// ./Formly
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 import { FormlyMatToggleModule } from '@ngx-formly/material/toggle';
@@ -107,6 +111,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { SelectionToolbarComponent } from './components/selection-toolbar/selection-toolbar.component';
 import { NaaToolbarComponent } from './components/naa-toolbar/naa-toolbar.component';
 import { NaaLayoutComponent } from './components/naa-layout/naa-layout.component';
+import { NaaFieldComponent } from './components/naa-field/naa-field.component';
 import { NaaFieldLabelPipe } from './pipes/naa-field-label.pipe';
 import { NaaResourceLabelPipe } from './pipes/naa-resource-label.pipe';
 import { NaaResourceLinkPipe } from './pipes/naa-resource-link.pipe';
@@ -118,6 +123,7 @@ import { ColumnsComponent } from './components/columns/columns.component';
 import { NaaHostDirective } from './directives/naa-host.directive';
 import { NaaTextareaAutoResizeComponent } from './form/components/naa-textarea-auto-resize/naa-textarea-auto-resize.component';
 import { naaTextAreaAutoResizeType } from './form/types/naa-textarea-auto-resize.type';
+import { CommonModule } from '@angular/common';
 
 // formly config
 const ngyFormlyConfig = {
@@ -127,21 +133,23 @@ const ngyFormlyConfig = {
       extensions: [
         { name: 'btnAddons', extension: { onPopulate: btnAddonsExtension } },
       ],
-      types: [naaTextAreaAutoResizeType]
+      types: [
+        naaTextAreaAutoResizeType,
+      ]
 
 };
 export function defaultFormlyConfig(config: FormlyConfig): ConfigOption {
   return {
-    // types: [
-    //   { name: 'formly-group', component: FormlyGroup },
-    //   { name: 'formly-template', component: FormlyTemplateType },
-    // ],
-    // extensions: [
-    //   { name: 'core', extension: new CoreExtension(config) },
-    //   { name: 'field-validation', extension: new FieldValidationExtension(config) },
-    //   { name: 'field-form', extension: new FieldFormExtension() },
-    //   { name: 'field-expression', extension: new FieldExpressionExtension() },
-    // ],
+    types: [
+      { name: 'formly-group', component: FormlyGroup },
+      // { name: 'formly-template', component: FormlyTemplateType },
+    ],
+//     extensions: [
+//       { name: 'core', extension: new CoreExtension(config) },
+//       { name: 'field-validation', extension: new FieldValidationExtension(config) },
+//       { name: 'field-form', extension: new FieldFormExtension() },
+//       { name: 'field-expression', extension: new FieldExpressionExtension() },
+//     ],
   };
 }
 
@@ -172,36 +180,38 @@ export function initializeAdmin(adminInitializer: AdminInitializer): any {
     ColumnsComponent,
     NaaHostDirective,
     NaaTextareaAutoResizeComponent,
+    NaaFieldComponent,
   ],
   exports: [
     AdminComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
+    // BrowserModule,
     MaterialsModule,
     ThemeModule,
     HttpClientModule,
     ReactiveFormsModule,
     // Formly
     // FormlyModule.forRoot(), // with issue
-    FormlyModule,
-    FormlyMaterialModule,
-    FormlyMatDatepickerModule,
-    FormlyMatToggleModule,
-    // ./Formly
-
-    // FormlyModule.forRoot({
-    //   wrappers: [
-    //     { name: 'btnAddons', component: BtnAddonsWrapperComponent },
-    //   ],
-    //   extensions: [
-    //     { name: 'btnAddons', extension: { onPopulate: btnAddonsExtension } },
-    //   ],
-    //   types: [naaTextAreaAutoResizeType]
-    // }),
+    // FormlyModule,
     // FormlyMaterialModule,
     // FormlyMatDatepickerModule,
     // FormlyMatToggleModule,
+    // ./Formly
+
+    FormlyModule.forRoot({
+      wrappers: [
+        { name: 'btnAddons', component: BtnAddonsWrapperComponent },
+      ],
+      extensions: [
+        { name: 'btnAddons', extension: { onPopulate: btnAddonsExtension } },
+      ],
+      types: [naaTextAreaAutoResizeType]
+    }),
+    FormlyMaterialModule,
+    FormlyMatDatepickerModule,
+    FormlyMatToggleModule,
     LoadingBarModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
@@ -215,8 +225,8 @@ export function initializeAdmin(adminInitializer: AdminInitializer): any {
       multi: true,
       deps: [AdminInitializer]
     },
-    { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },
-    { provide: FORMLY_CONFIG, useValue: ngyFormlyConfig, multi: true },
+    // { provide: FORMLY_CONFIG, multi: true, useFactory: defaultFormlyConfig, deps: [FormlyConfig] },
+    // { provide: FORMLY_CONFIG, useValue: ngyFormlyConfig, multi: true },
     FormlyConfig,
     FormlyFormBuilder,
   ],

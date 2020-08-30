@@ -12,6 +12,14 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
+Before building, you must insert the code below in the following files before Nullable usage.
+In /node_modules/@api-platform/api-doc-parser/ folder : Api.d.ts, Field.d.ts, Operation.d.ts and Resource.d.ts
+
+declare type Nullable < T extends Record < string, unknown >> = {
+  [P in keyof T]: T[P] | null;
+};
+
+
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests

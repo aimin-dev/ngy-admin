@@ -1,15 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-// import parseHydraDocumentation from '@api-platform/api-doc-parser/lib/hydra/parseHydraDocumentation';
-// import { Api } from '@api-platform/api-doc-parser/src';
+import parseHydraDocumentation from '@api-platform/api-doc-parser/lib/hydra/parseHydraDocumentation';
 import { AdminRouter } from '../router/admin-router';
 import { NAA_ENTRYPOINT } from '../config/naa-entrypoint';
-import { hydraDoc } from './hydraDoc';
-
-export const parseHydraDocumentation = (entrypoint: any): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    resolve(hydraDoc);
-  });
-};
 
 // @dynamic
 @Injectable({

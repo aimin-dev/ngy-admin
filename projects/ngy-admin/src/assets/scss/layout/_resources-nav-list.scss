@@ -1,0 +1,15 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-07-16 17:20:22
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-07-16 17:29:40
+ */
+
+.mat-nav-list.naa-resources-nav-list {
+    .mat-list-item {
+        &.active {
+            background-color: var(--naa-background-hover);
+            border-right: _rem(2) solid var(--naa-accent);
+        }
+    }
+}

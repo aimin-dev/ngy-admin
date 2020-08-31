@@ -1,0 +1,125 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-06-25 01:26:09
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-07-22 22:45:33
+ */
+
+@function build-font($config, $level) {
+    $font-size: mat-font-size($config, $level);
+    $font-weight: mat-font-weight($config, $level);
+    $line-height: mat-line-height($config, $level);
+    $font-family: mat-font-family($config, $level);
+
+    @if ($font-size == inherit or
+        $font-weight == inherit or
+        $line-height == inherit or
+        $font-family == inherit or
+        $font-size == null or
+        $font-weight == null or
+        $line-height == null or
+        $font-family == null) {
+        @return null;
+    }
+
+
+    @return $font-weight #{$font-size}/#{$line-height} $font-family;
+}
+
+@mixin vars-builder($selector, $theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $is-dark: map-get($theme, is-dark);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $config: mat-typography-config();
+
+    $material-typography-keys: (
+        display-4,
+        display-3,
+        display-2,
+        display-1,
+        headline,
+        title,
+        subheading-2,
+        subheading-1,
+        body-2,
+        body-1,
+        caption,
+        button,
+        input
+    );
+
+    $app-mode: light;
+    @if $is-dark {
+        $app-mode: dark;
+    }
+
+    #{$selector} {
+        // colors
+        --naa-primary: #{mat-color($primary)};
+        --naa-primary-yiq-text: #{color-yiq(mat-color($primary))};
+        --naa-accent: #{mat-color($accent)};
+        --naa-accent-yiq-text: #{color-yiq(mat-color($accent))};
+        --naa-warn: #{mat-color($warn)};
+        --naa-warn-yiq-text: #{color-yiq(mat-color($warn))};
+        --naa-mode: #{$app-mode};
+        // backgrounds
+        --naa-background-status-bar: #{mat-color($background, status-bar)};
+        --naa-background-app-bar: #{mat-color($background, app-bar)};
+        --naa-background-background: #{mat-color($background, background)};
+        --naa-background-hover: #{mat-color($background, hover)};
+        --naa-background-card: #{mat-color($background, card)};
+        --naa-background-dialog: #{mat-color($background, dialog)};
+        --naa-background-disabled-button: #{mat-color($background, disabled-button)};
+        --naa-background-raised-button: #{mat-color($background, raised-button)};
+        --naa-background-focused-button: #{mat-color($background, focused-button)};
+        --naa-background-selected-button: #{mat-color($background, selected-button)};
+        --naa-background-selected-disabled-button: #{mat-color($background, selected-disabled-button)};
+        --naa-background-disabled-button-toggle: #{mat-color($background, disabled-button-toggle)};
+        --naa-background-unselected-chip: #{mat-color($background, unselected-chip)};
+        --naa-background-disabled-list-option: #{mat-color($background, disabled-list-option)};
+        --naa-background-tooltip: #{mat-color($background, tooltip)};
+        // foregrounds
+        --naa-foreground-divider-A500: #{rgba(mat-color($foreground, divider), .06)};
+        --naa-foreground-base: #{mat-color($foreground, base)};
+        --naa-foreground-divider: #{mat-color($foreground, divider)};
+        --naa-foreground-dividers: #{mat-color($foreground, dividers)};
+        --naa-foreground-disabled: #{mat-color($foreground, disabled)};
+        --naa-foreground-disabled-button: #{mat-color($foreground, disabled-button)};
+        --naa-foreground-disabled-text: #{mat-color($foreground, disabled-text)};
+        --naa-foreground-elevation: #{mat-color($foreground, elevation)};
+        --naa-foreground-hint-text: #{mat-color($foreground, hint-text)};
+        --naa-foreground-secondary-text: #{mat-color($foreground, secondary-text)};
+        --naa-foreground-icon: #{mat-color($foreground, icon)};
+        --naa-foreground-icons: #{mat-color($foreground, icons)};
+        --naa-foreground-text: #{mat-color($foreground, text)};
+        --naa-foreground-slider-min: #{mat-color($foreground, slider-min)};
+        --naa-foreground-slider-off: #{mat-color($foreground, slider-off)};
+        --naa-foreground-slider-off-active: #{mat-color($foreground, slider-off-active)};
+        
+        // typography
+
+        // font
+        @each $key in $material-typography-keys {
+            --naa-typography-font-#{$key}: #{build-font($config, $key)};
+            --naa-typography-font-size-#{$key}: #{mat-font-size($config, $key)};
+            --naa-typography-font-weight-#{$key}: #{mat-font-weight($config, $key)};
+        }
+
+        // vars
+        --naa-spacer: #{$spacer};
+        --naa-spacer-1: #{$spacer/4};
+        --naa-spacer-2: #{$spacer/2};
+        --naa-spacer-3: #{$spacer/1};
+        --naa-spacer-4: #{$spacer/0.5};
+        --naa-spacer-5: #{$spacer * 3};
+
+        // calendar
+        --naa-calendar-size-day-number: #{map-get($calendar-size, day-number)};
+        --naa-calendar-size-day-number-today: #{map-get($calendar-size, day-number-today)};
+        --naa-calendar-size-event: #{map-get($calendar-size, event)};
+    }
+}

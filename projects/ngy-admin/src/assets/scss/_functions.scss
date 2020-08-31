@@ -1,0 +1,73 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-06-25 01:31:11
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-06-25 01:31:33
+ */
+
+@function app-theme-color($theme, $name, $hue: default) {
+	@return (mat-color(map-get($theme, $name), $hue));
+}
+
+@function app-divider-border-color($theme) {
+	@return (app-theme-color($theme, foreground, divider));
+}
+
+@function app-border-color($theme) {
+	@return (app-theme-color($theme, foreground, divider));
+}
+
+@function app-card-background-color($theme) {
+	@return (app-theme-color($theme, background, card));
+}
+
+@function app-theme-background($theme, $hue) {
+	@return (app-theme-color($theme, background, $hue));
+}
+
+@function app-theme-foreground($theme, $hue) {
+	@return (app-theme-color($theme, foreground, $hue));
+}
+
+@function app-text-foreground-color($theme) {
+	@return app-theme-color($theme, foreground, text);
+}
+
+@function app-secondary-text-foreground-color($theme) {
+	@return app-theme-color($theme, foreground, secondary-text);
+}
+
+@function app-hover-background($theme) {
+	@return app-theme-color($theme, background, hover);
+}
+
+@function app-background-color($theme) {
+	@return app-theme-color($theme, background, 'card');
+}
+
+@function app-active-background($theme) {
+	@return rgba(app-hover-background($theme), 0.08);
+}
+
+@function app-disabled-foreground-color($theme) {
+	@return app-theme-color($theme, foreground, disabled-button);
+}
+
+@function app-primary-color($theme) {
+	@return app-theme-color($theme, primary);
+}
+
+@function app-warn-color($theme) {
+	@return app-theme-color($theme, warn);
+}
+
+@function app-accent-color($theme) {
+	@return app-theme-color($theme, accent);
+}
+
+@function app-input-border-color($theme) {
+	@if (map-get($theme, is-dark)) {
+		@return rgba(app-text-foreground-color($theme), 0.3);
+	}
+	@return rgba(app-text-foreground-color($theme), 0.12);
+}

@@ -1,0 +1,27 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-07-15 16:22:36
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-07-23 06:04:10
+ */
+
+.ngx-api-admin-list-container {
+    .ngx-api-admin-list-header {
+        display: flex;
+        margin-bottom: 1.5 * $naa-spacer;
+        &.naa-header-merge {
+            padding-top: var(--naa-spacer-2);
+            padding-bottom: var(--naa-spacer-2);
+            margin-bottom: 0;
+            background: var(--naa-background-dialog);
+            border-bottom: 1px solid var(--naa-foreground-divider);
+        }
+        .ngx-api-admin-list-actions {
+            margin-left: auto;
+        }
+    }
+    th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+        padding-left: $naa-spacer / 2;
+        padding-right: $naa-spacer / 2;
+    }
+}

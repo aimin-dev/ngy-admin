@@ -1,0 +1,32 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-06-21 14:23:48
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-07-15 20:49:07
+ */
+
+@import './vars';
+@import './functions';
+@import './helper/index';
+@import './vendor/index';
+@import './theme/index.scss';
+@import './fonts';
+@import './form/form';
+@import './crud/crud';
+@import './components/components';
+
+* {
+    box-sizing: border-box;
+}
+
+body[mode='dark'] {
+    @include angular-material-theme($app-dark-theme);
+    @include app-theme();
+}
+@include vars-builder('body[mode=dark]', $app-dark-theme);
+
+body {
+    @include angular-material-theme($app-theme);
+    @include app-theme();
+}
+@include vars-builder(body, $app-theme);

@@ -1,0 +1,16 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-06-25 01:10:36
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-06-25 02:55:34
+ */
+
+$theme-colors: (
+    // app-primary: var(--app-primary),
+);
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/grid";

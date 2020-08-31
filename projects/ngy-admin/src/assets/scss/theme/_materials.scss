@@ -1,0 +1,65 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-06-29 22:07:31
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-07-16 18:29:10
+ */
+
+@mixin calendar-toolbar-theming() {
+    .mat-toolbar {
+        &.calendar-toolbar {
+            background: var(--app-background-background);
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@mixin calendar-sidenav-theming() {
+    .calendar-sidenav-container {
+        .mat-drawer {
+            background: var(--app-background-background);
+        }
+    }
+    .calendar-sidenav-container {
+        app-toolbar .mat-toolbar {
+            border-bottom: 1px solid var(--app-foreground-divider);
+        }
+        mat-sidenav-content {
+            .fc .fc-scrollgrid, .fc .fc-list {
+                border-top: none;
+                border-left: none;
+            }
+        }
+    }
+}
+
+@mixin menu-trigger-theming() {
+    .mat-menu-trigger {
+        mat-icon.expand-icon {
+            transition: all .2s ease-in;
+        }
+        &[aria-expanded=true] {
+            mat-icon.expand-icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+@mixin mat-calendar-theming() {
+    mat-calendar .mat-calendar-body-label{
+        &[colspan="7"] {
+            display: none;
+        }
+        &:not([colspan="7"]) {
+            visibility: hidden;;
+        }
+    }
+}
+
+@mixin material-theming() {
+    @include calendar-toolbar-theming();
+    @include calendar-sidenav-theming();
+    @include menu-trigger-theming();
+    @include mat-calendar-theming();
+}

@@ -1,0 +1,64 @@
+/*
+ * @Author: stephan <m6ahenina@gmail.com>
+ * @Date: 2020-06-21 14:23:26
+ * @Last Modified by: stephan <m6ahenina@gmail.com>
+ * @Last Modified time: 2020-07-22 23:29:45
+ */
+
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+$root-em: 1rem;
+$naa-spacer: 16px;
+
+// get relative size
+@function _rem($px-value) {
+	@return $px-value / 16 * $root-em;
+}
+
+$yiq-text-dark: rgba(#000, .87);
+$yiq-text-light: #FFF;
+// Color contrast
+@function color-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
+	$r: red($color);
+	$g: green($color);
+	$b: blue($color);
+
+	$yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+	@if ($yiq >= $yiq-contrasted-threshold) {
+		@return $dark;
+	} @else {
+		@return $light;
+	}
+}
+
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($mat-indigo);
+$app-dark-primary: mat-palette($mat-indigo);
+$app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$app-dark-accent:  mat-palette($mat-pink);
+
+// The warn palette is optional (defaults to red).
+$app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+$app-dark-theme: mat-dark-theme($app-dark-primary, $app-dark-accent, $app-warn);
+
+$spacer: _rem(16);
+$calendar-size: (
+	day-number: _rem(24),
+	day-number-today: _rem(24),
+	event: _rem(16),
+);
